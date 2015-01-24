@@ -1,0 +1,21 @@
+function [matrix ] = gaussian_kernel( w,s )
+%gaussian_kernel Summary of this function goes here
+%   Detailed explanation goes here
+half = double(floor(w/2));
+
+for x = 1:w
+    for y = 1:w
+        p = -half + x -1 
+        q = -half + y -1
+        NormXY = p^2 + q^2
+        exponent = exp(-NormXY/(2*s))
+        matrix(x,y) = exponent/(2*pi*s)
+        
+    end
+end    
+     
+
+[matrix] = matrix /(2*pi*s)
+
+end
+
